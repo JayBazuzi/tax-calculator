@@ -9,12 +9,12 @@
         { "rate": 0.24, "min": 201050, "max": 383900 },
         { "rate": 0.32, "min": 383900, "max": 487450 },
         { "rate": 0.35, "min": 487450, "max": 731200 },
-        { "rate": 0.37, "min": 731200, "max": Infinity }
+        { "rate": 0.37, "min": 731200, "max": null }
       ],
       "longTermCapitalGains": [
         { "rate": 0.00, "min": 0, "max": 94050 },
         { "rate": 0.15, "min": 94050, "max": 583750 },
-        { "rate": 0.20, "min": 583750, "max": Infinity }
+        { "rate": 0.20, "min": 583750, "max": null }
       ]
     }
   },
@@ -28,12 +28,12 @@
         { "rate": 0.24, "min": 206700, "max": 394600 },
         { "rate": 0.32, "min": 394600, "max": 501050 },
         { "rate": 0.35, "min": 501050, "max": 751600 },
-        { "rate": 0.37, "min": 751600, "max": Infinity }
+        { "rate": 0.37, "min": 751600, "max": null }
       ],
       "longTermCapitalGains": [
         { "rate": 0.00, "min": 0, "max": 96700 },
         { "rate": 0.15, "min": 96700, "max": 600050 },
-        { "rate": 0.20, "min": 600050, "max": Infinity }
+        { "rate": 0.20, "min": 600050, "max": null }
       ]
     }
   },

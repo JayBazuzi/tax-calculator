@@ -6,6 +6,8 @@ If you see a risk or think we're doing something wrong, say so immediately.
 
 Take small steps. Commit often.
 
+To run tests, use `./build_and_test`. *NEVER* run npm directly.
+
 ## Style
 
 When a list is comma-separated and has more than one item, put the last item on its own line with a trailing comma.
