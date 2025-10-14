@@ -1,9 +1,5 @@
 nodejs = "20.11.0"
 
 [tasks]
-build_and_test = [
-    "npm install",
-    "npm run build",
-    ]
-run = ["npm install", 
-"npm run dev"]
+run = ["npm install", "npm run build", "open index.html"]
+build_and_test = ["npm install", "npm run build"]

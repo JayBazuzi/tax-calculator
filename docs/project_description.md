@@ -10,15 +10,23 @@
 ./run
 ```
 
+This will compile as needed and open `index.html` directly in your browser. No dev server required.
+
 ### Build and Test
 ```bash
 ./build_and_test
 ```
 
+This compiles as needed and runs any tests, including linting/static analysis.
+
 ## Technologies
 
-Single-page app with no backend that runs completely on the frontend in TypeScript.
-Data resets each session (no persistence).
+Single-page static HTML/CSS/TypeScript app with no backend.
+- Vanilla TypeScript (no frameworks)
+- TypeScript compiled to JavaScript using tsc
+- All tax data embedded directly in the TypeScript file
+- Opens directly in browser without requiring a dev server
+- Data resets each session (no persistence)
 
 ## UI Layout
 
