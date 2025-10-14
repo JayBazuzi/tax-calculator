@@ -2,6 +2,8 @@
 
 ## Development
 
+All development experiences are implemented as mise tasks.
+
 ### Prerequisites
 - [mise](https://mise.jdx.dev/) must be installed
 
