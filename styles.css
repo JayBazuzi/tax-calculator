@@ -106,29 +106,36 @@ header h1 {
     margin-bottom: 5px;
 }
 
-.income-input-row {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
+.bars-container {
     margin-top: 30px;
-}
-
-.income-input-row:last-child {
-    margin-bottom: 0;
-}
-
-.income-input-row label {
-    font-weight: 600;
-    min-width: 140px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
 }
 
 .bar-with-slider {
-    flex: 1;
     position: relative;
     height: 40px;
     border: 1px solid #ccc;
     background-color: #fafafa;
+}
+
+.income-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.income-control-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.income-control-row label {
+    font-weight: 600;
+    min-width: 120px;
 }
 
 .income-bar {
@@ -190,7 +197,7 @@ header h1 {
     border: none;
 }
 
-.income-input-row input[type="number"] {
+.income-control-row input[type="number"] {
     width: 150px;
     padding: 8px 12px;
     border: 1px solid #ccc;

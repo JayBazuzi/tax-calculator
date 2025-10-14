@@ -44,22 +44,26 @@
                 <span>S.D.</span>
             </div>
 
-            <div class="income-input-row">
-                <label for="regular-income">Regular income:</label>
+            <div class="bars-container">
                 <div class="bar-with-slider">
                     <div class="income-bar regular-income-bar" id="regular-income-bar"></div>
                     <input type="range" id="regular-income" min="0" max="1000000" step="1000" value="0" class="bar-slider">
                 </div>
-                <input type="number" id="regular-income-value" min="0" max="1000000" step="1000" value="0">
-            </div>
-
-            <div class="income-input-row">
-                <label for="ltcg">LTCG:</label>
                 <div class="bar-with-slider">
                     <div class="income-bar ltcg-bar" id="ltcg-bar"></div>
                     <input type="range" id="ltcg" min="0" max="1000000" step="1000" value="0" class="bar-slider">
                 </div>
-                <input type="number" id="ltcg-value" min="0" max="1000000" step="1000" value="0">
+            </div>
+
+            <div class="income-controls">
+                <div class="income-control-row">
+                    <label for="regular-income">Regular income:</label>
+                    <input type="number" id="regular-income-value" min="0" max="1000000" step="1000" value="0">
+                </div>
+                <div class="income-control-row">
+                    <label for="ltcg">LTCG:</label>
+                    <input type="number" id="ltcg-value" min="0" max="1000000" step="1000" value="0">
+                </div>
             </div>
         </div>
 
