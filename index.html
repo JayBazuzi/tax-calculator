@@ -43,28 +43,28 @@
             <div class="deduction-marker" id="deduction-marker">
                 <span>S.D.</span>
             </div>
-            <div class="income-bars">
-                <div class="income-bar regular-income-bar" id="regular-income-bar"></div>
-                <div class="income-bar ltcg-bar" id="ltcg-bar"></div>
+
+            <div class="income-input-row">
+                <label for="regular-income">Regular income:</label>
+                <div class="bar-with-slider">
+                    <div class="income-bar regular-income-bar" id="regular-income-bar"></div>
+                    <input type="range" id="regular-income" min="0" max="1000000" step="1000" value="0" class="bar-slider">
+                </div>
+                <input type="number" id="regular-income-value" min="0" max="1000000" step="1000" value="0">
+            </div>
+
+            <div class="income-input-row">
+                <label for="ltcg">LTCG:</label>
+                <div class="bar-with-slider">
+                    <div class="income-bar ltcg-bar" id="ltcg-bar"></div>
+                    <input type="range" id="ltcg" min="0" max="1000000" step="1000" value="0" class="bar-slider">
+                </div>
+                <input type="number" id="ltcg-value" min="0" max="1000000" step="1000" value="0">
             </div>
         </div>
 
         <div class="total-income">
             Total income: <span id="total-income">$0</span>
-        </div>
-
-        <div class="income-inputs">
-            <div class="input-group">
-                <label for="regular-income">Regular income:</label>
-                <input type="range" id="regular-income" min="0" max="1000000" step="1000" value="0">
-                <input type="number" id="regular-income-value" min="0" max="1000000" step="1000" value="0">
-            </div>
-
-            <div class="input-group">
-                <label for="ltcg">LTCG:</label>
-                <input type="range" id="ltcg" min="0" max="1000000" step="1000" value="0">
-                <input type="number" id="ltcg-value" min="0" max="1000000" step="1000" value="0">
-            </div>
         </div>
 
         <div class="taxes-section">

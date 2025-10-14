@@ -106,18 +106,38 @@ header h1 {
     margin-bottom: 5px;
 }
 
-.income-bars {
+.income-input-row {
     display: flex;
-    height: 40px;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
     margin-top: 30px;
-    border: 1px solid #ccc;
+}
+
+.income-input-row:last-child {
+    margin-bottom: 0;
+}
+
+.income-input-row label {
+    font-weight: 600;
+    min-width: 140px;
+}
+
+.bar-with-slider {
+    flex: 1;
     position: relative;
+    height: 40px;
+    border: 1px solid #ccc;
     background-color: #fafafa;
 }
 
 .income-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 100%;
     transition: width 0.3s ease;
+    pointer-events: none;
 }
 
 .regular-income-bar {
@@ -128,48 +148,62 @@ header h1 {
     background-color: #50c878;
 }
 
-.total-income {
-    padding: 15px 20px;
-    text-align: right;
-    font-size: 16px;
-    font-weight: 600;
-    border-bottom: 1px solid #ddd;
+.bar-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
-.income-inputs {
-    padding: 20px;
-    border-bottom: 2px solid #333;
+.bar-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 3px;
+    height: 100%;
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: ew-resize;
 }
 
-.input-group {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
+.bar-slider::-moz-range-thumb {
+    width: 3px;
+    height: 100%;
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: ew-resize;
+    border: none;
 }
 
-.input-group:last-child {
-    margin-bottom: 0;
+.bar-slider::-webkit-slider-runnable-track {
+    height: 100%;
+    background: transparent;
 }
 
-.input-group label {
-    font-weight: 600;
-    min-width: 140px;
+.bar-slider::-moz-range-track {
+    height: 100%;
+    background: transparent;
+    border: none;
 }
 
-.input-group input[type="range"] {
-    flex: 1;
-    height: 8px;
-    border-radius: 4px;
-    outline: none;
-}
-
-.input-group input[type="number"] {
+.income-input-row input[type="number"] {
     width: 150px;
     padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
+}
+
+.total-income {
+    padding: 15px 20px;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 2px solid #333;
 }
 
 .taxes-section {
@@ -205,25 +239,6 @@ header h1 {
     font-size: 18px;
     font-weight: 600;
     text-align: right;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #4a90e2;
-    cursor: pointer;
-}
-
-input[type="range"]::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #4a90e2;
-    cursor: pointer;
-    border: none;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
