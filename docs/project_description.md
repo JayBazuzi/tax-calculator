@@ -1,5 +1,20 @@
 # Project description
 
+## Development
+
+### Prerequisites
+- [mise](https://mise.jdx.dev/) must be installed
+
+### Running the Project
+```bash
+./run
+```
+
+### Build and Test
+```bash
+./build_and_test
+```
+
 ## Technologies
 
 Single-page app with no backend that runs completely on the frontend in TypeScript.
@@ -15,14 +30,14 @@ Data resets each session (no persistence).
 │  Filing Status: [Married Filing Jointly ▼]                      │
 │                                                                 │
 │                   10%      12%      20%                         │  # income tax brackets
-│                                              15%                │  # LTCG tax brackets
+│                                              15%                │  # LTCG (Long-Term Capital Gains) tax brackets
 │         S.D       │                                             │  # standard deduction
 │          ▼        │                                             │
 │  ├──Regular Income───────│─────────── LTCG ──────────┤          │
 │                                   Total income: $100,000        │
-|
-|  Regular income: [ $xxx ]                                                │
-|  LTCG: [ $xxx ]                                                        │
+│
+│  Regular income: [ $xxx ]                                                │
+│  LTCG: [ $xxx ]                                                        │
 │                                                                 │
 ├─────────────────────────────────────────────────────────────────┤
 │                           Taxes                                 │
@@ -38,11 +53,11 @@ Data resets each session (no persistence).
 │                                                                 │
 │  Total taxes: $xxx                                              │
 └─────────────────────────────────────────────────────────────────┘
-``` 
+```
 
-## behavior
+## Behavior
 
-the user can clide the regular income left-right slider to change the amount of regular income
+the user can slide the regular income left-right slider to change the amount of regular income
 
 the user can slide the LTCG left-right slider to change the amount of Long-term capital gains
 
