@@ -1,0 +1,232 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.calculator {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: white;
+    border: 2px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #333;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.controls {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.control-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.control-row:last-child {
+    margin-bottom: 0;
+}
+
+.control-row label {
+    font-weight: 600;
+    min-width: 120px;
+}
+
+.control-row select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    min-width: 250px;
+}
+
+.bracket-visualization {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.bracket-section {
+    margin-bottom: 15px;
+}
+
+.bracket-labels {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    font-weight: 600;
+    color: #555;
+}
+
+.bracket-label {
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+.income-visualization {
+    padding: 20px;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+
+.deduction-marker {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    color: #666;
+}
+
+.deduction-marker span {
+    margin-bottom: 5px;
+}
+
+.income-bars {
+    display: flex;
+    height: 40px;
+    margin-top: 30px;
+    border: 1px solid #ccc;
+    position: relative;
+    background-color: #fafafa;
+}
+
+.income-bar {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.regular-income-bar {
+    background-color: #4a90e2;
+}
+
+.ltcg-bar {
+    background-color: #50c878;
+}
+
+.total-income {
+    padding: 15px 20px;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid #ddd;
+}
+
+.income-inputs {
+    padding: 20px;
+    border-bottom: 2px solid #333;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.input-group:last-child {
+    margin-bottom: 0;
+}
+
+.input-group label {
+    font-weight: 600;
+    min-width: 140px;
+}
+
+.input-group input[type="range"] {
+    flex: 1;
+    height: 8px;
+    border-radius: 4px;
+    outline: none;
+}
+
+.input-group input[type="number"] {
+    width: 150px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.taxes-section {
+    padding: 20px;
+}
+
+.taxes-section h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.tax-breakdown {
+    margin-bottom: 25px;
+}
+
+.tax-breakdown h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.tax-line {
+    padding: 5px 0;
+    color: #555;
+    font-family: 'Courier New', monospace;
+}
+
+.total-taxes {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #333;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: right;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4a90e2;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4a90e2;
+    cursor: pointer;
+    border: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+}
