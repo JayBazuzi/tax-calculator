@@ -20,6 +20,9 @@ Data resets each session (no persistence).
 │          ▼        │                                             │
 │  ├──Regular Income───────│─────────── LTCG ──────────┤          │
 │                                   Total income: $100,000        │
+|
+|  Regular income: [ $xxx ]                                                │
+|  LTCG: [ $xxx ]                                                        │
 │                                                                 │
 ├─────────────────────────────────────────────────────────────────┤
 │                           Taxes                                 │
@@ -36,3 +39,15 @@ Data resets each session (no persistence).
 │  Total taxes: $xxx                                              │
 └─────────────────────────────────────────────────────────────────┘
 ``` 
+
+## behavior
+
+the user can clide the regular income left-right slider to change the amount of regular income
+
+the user can slide the LTCG left-right slider to change the amount of Long-term capital gains
+
+The standard deduction and tax brackets are set by the filing status
+
+the tax values update in real time as the sliders are moved
+
+the total taxes are the sum of the regular income taxes and the LTCG taxes
