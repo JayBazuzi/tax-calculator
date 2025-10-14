@@ -8,4 +8,4 @@ fi
 
 mise install --quiet
 
-mise task run $(basename $0)
+mise task --quiet run $(basename $0)
