@@ -1,0 +1,1 @@
+- eliminate npm scripts, use mise instead
