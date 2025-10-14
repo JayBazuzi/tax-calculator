@@ -2,10 +2,6 @@
   "name": "retirement-tax-calculator",
   "version": "1.0.0",
   "description": "Single-page retirement tax calculator built with TypeScript",
-  "scripts": {
-    "build": "tsc",
-    "test": "playwright test"
-  },
   "devDependencies": {
     "@playwright/test": "^1.40.0",
     "@types/node": "^20.10.0",
