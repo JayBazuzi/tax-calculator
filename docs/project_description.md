@@ -2,7 +2,7 @@
 
 ## Technologies
 
-Single-page app with no backend that runs completely on the frontend in JS/TS.
+Single-page app with no backend that runs completely on the frontend in TypeScript.
 Data resets each session (no persistence).
 
 ## UI Layout
