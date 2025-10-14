@@ -1,0 +1,1 @@
+mise task run $(basename $0)
