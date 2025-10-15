@@ -273,25 +273,31 @@ function updateBracketLabels(): void {
   incomeBracketsContainer.innerHTML = '';
   ltcgBracketsContainer.innerHTML = '';
 
+  const standardDeduction = currentFilingStatus.standardDeduction;
+
   // Add ordinary income bracket labels
+  // These apply to taxable income, so shift by standard deduction
   for (const bracket of currentFilingStatus.ordinaryIncome) {
-    if (bracket.min <= MAX_INCOME) {
+    const actualIncomePosition = bracket.min + standardDeduction;
+    if (actualIncomePosition <= MAX_INCOME) {
       const label = document.createElement('div');
       label.className = 'bracket-label';
       label.textContent = `${(bracket.rate * 100).toFixed(0)}%`;
-      const position = incomeToPercent(bracket.min);
+      const position = incomeToPercent(actualIncomePosition);
       label.style.left = `${position}%`;
       incomeBracketsContainer.appendChild(label);
     }
   }
 
   // Add LTCG bracket labels
+  // These also apply to taxable income, so shift by standard deduction
   for (const bracket of currentFilingStatus.longTermCapitalGains) {
-    if (bracket.min <= MAX_INCOME) {
+    const actualIncomePosition = bracket.min + standardDeduction;
+    if (actualIncomePosition <= MAX_INCOME) {
       const label = document.createElement('div');
       label.className = 'bracket-label';
       label.textContent = `${(bracket.rate * 100).toFixed(0)}%`;
-      const position = incomeToPercent(bracket.min);
+      const position = incomeToPercent(actualIncomePosition);
       label.style.left = `${position}%`;
       ltcgBracketsContainer.appendChild(label);
     }
