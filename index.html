@@ -16,53 +16,63 @@
             <div class="control-row">
                 <label for="filing-status">Filing Status:</label>
                 <select id="filing-status">
-                    <option value="marriedFilingJointly">Married Filing Jointly</option>
+                    <option value="married-jointly">Married Filing Jointly</option>
+                    <option value="single">Single</option>
+                    <option value="married-separately">Married Filing Separately</option>
+                    <option value="head-of-household">Head of Household</option>
                 </select>
             </div>
-
             <div class="control-row">
-                <label for="tax-year">Tax Year:</label>
-                <select id="tax-year">
-                    <option value="2024">2024</option>
-                    <option value="2025">2025</option>
-                    <option value="2026" disabled>2026 (data not available)</option>
-                </select>
+                <label>Standard Deduction:</label>
+                <span id="standard-deduction">$25,900</span>
             </div>
         </div>
 
         <div class="bracket-visualization">
-            <div class="bracket-section ordinary-income-brackets">
-                <div class="bracket-labels" id="ordinary-brackets"></div>
+            <div class="bracket-section">
+                <div class="bracket-labels" id="income-brackets">
+                    <div class="bracket-label">10%</div>
+                    <div class="bracket-label">12%</div>
+                    <div class="bracket-label">22%</div>
+                    <div class="bracket-label">24%</div>
+                    <div class="bracket-label">32%</div>
+                </div>
             </div>
-            <div class="bracket-section ltcg-brackets">
-                <div class="bracket-labels" id="ltcg-brackets"></div>
+            <div class="bracket-section">
+                <div class="bracket-labels" id="ltcg-brackets">
+                    <div class="bracket-label">15%</div>
+                </div>
             </div>
         </div>
 
         <div class="income-visualization">
-            <div class="deduction-marker" id="deduction-marker">
+            <div class="deduction-marker">
                 <span>S.D.</span>
+                <span>↓</span>
             </div>
 
             <div class="bars-container">
-                <div class="bar-with-slider">
+                <div class="income-bar-track">
+                    <!-- Regular Income bar (blue) -->
                     <div class="income-bar regular-income-bar" id="regular-income-bar"></div>
-                    <input type="range" id="regular-income" min="0" max="1000000" step="1000" value="0" class="bar-slider">
-                </div>
-                <div class="bar-with-slider">
+                    <!-- LTCG bar (green) starts where regular income ends -->
                     <div class="income-bar ltcg-bar" id="ltcg-bar"></div>
-                    <input type="range" id="ltcg" min="0" max="1000000" step="1000" value="0" class="bar-slider">
+
+                    <!-- Thumb for regular income -->
+                    <div class="slider-thumb regular-thumb" id="regular-thumb"></div>
+                    <!-- Thumb for LTCG (appears at the end of LTCG bar) -->
+                    <div class="slider-thumb ltcg-thumb" id="ltcg-thumb"></div>
                 </div>
             </div>
 
             <div class="income-controls">
                 <div class="income-control-row">
-                    <label for="regular-income">Regular income:</label>
-                    <input type="number" id="regular-income-value" min="0" max="1000000" step="1000" value="0">
+                    <label for="regular-income-input">Regular income:</label>
+                    <input type="number" id="regular-income-input" value="0" min="0" step="1000">
                 </div>
                 <div class="income-control-row">
-                    <label for="ltcg">LTCG:</label>
-                    <input type="number" id="ltcg-value" min="0" max="1000000" step="1000" value="0">
+                    <label for="ltcg-input">LTCG:</label>
+                    <input type="number" id="ltcg-input" value="0" min="0" step="1000">
                 </div>
             </div>
         </div>
@@ -76,12 +86,19 @@
 
             <div class="tax-breakdown">
                 <h3>Regular Income:</h3>
-                <div id="regular-income-taxes"></div>
+                <div id="regular-income-taxes">
+                    <div class="tax-line">$0 @ 10% = $0</div>
+                    <div class="tax-line">$0 @ 12% = $0</div>
+                    <div class="tax-line">$0 @ 22% = $0</div>
+                </div>
             </div>
 
             <div class="tax-breakdown">
                 <h3>Capital Gains:</h3>
-                <div id="ltcg-taxes"></div>
+                <div id="capital-gains-taxes">
+                    <div class="tax-line">$0 @ 0% = $0</div>
+                    <div class="tax-line">$0 @ 15% = $0</div>
+                </div>
             </div>
 
             <div class="total-taxes">

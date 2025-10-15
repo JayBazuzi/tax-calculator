@@ -108,18 +108,17 @@ header h1 {
 
 .bars-container {
     margin-top: 30px;
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+    margin-bottom: 30px;
+    position: relative;
 }
 
-.bar-with-slider {
+.income-bar-track {
     position: relative;
     width: 100%;
     height: 40px;
-    border: 1px solid #ccc;
+    border: 2px solid #333;
     background-color: #fafafa;
+    overflow: visible;
 }
 
 .income-controls {
@@ -142,60 +141,51 @@ header h1 {
 .income-bar {
     position: absolute;
     top: 0;
-    left: 0;
     height: 100%;
-    transition: width 0.3s ease;
+    width: 0%;
+    transition: all 0.1s ease;
     pointer-events: none;
 }
 
 .regular-income-bar {
+    left: 0;
     background-color: #4a90e2;
+    z-index: 1;
 }
 
 .ltcg-bar {
+    /* Will be positioned dynamically after regular income */
     background-color: #50c878;
+    z-index: 1;
 }
 
-.bar-slider {
+.slider-thumb {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    cursor: pointer;
-    -webkit-appearance: none;
-    appearance: none;
-}
-
-.bar-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 3px;
-    height: 100%;
-    border-radius: 0;
-    background: rgba(0, 0, 0, 0.5);
+    top: -2px;
+    width: 4px;
+    height: calc(100% + 4px);
+    background-color: #333;
     cursor: ew-resize;
+    z-index: 10;
+    transition: left 0.1s ease;
 }
 
-.bar-slider::-moz-range-thumb {
-    width: 3px;
-    height: 100%;
-    border-radius: 0;
-    background: rgba(0, 0, 0, 0.5);
-    cursor: ew-resize;
-    border: none;
+.slider-thumb:hover {
+    background-color: #000;
+    width: 6px;
 }
 
-.bar-slider::-webkit-slider-runnable-track {
-    height: 100%;
-    background: transparent;
+.slider-thumb:active {
+    background-color: #000;
+    width: 6px;
 }
 
-.bar-slider::-moz-range-track {
-    height: 100%;
-    background: transparent;
-    border: none;
+.regular-thumb {
+    left: 0%;
+}
+
+.ltcg-thumb {
+    left: 0%;
 }
 
 .income-control-row input[type="number"] {
