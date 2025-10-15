@@ -265,11 +265,19 @@ function loadTaxData(): void {
 
 // Update standard deduction display
 function updateStandardDeduction(): void {
-  standardDeductionSpan.textContent = `$${currentFilingStatus.standardDeduction.toLocaleString()}`;
+  const sdAmount = currentFilingStatus.standardDeduction;
+  standardDeductionSpan.textContent = `$${sdAmount.toLocaleString()}`;
 
   // Position the deduction marker
-  const deductionPosition = incomeToPercent(currentFilingStatus.standardDeduction);
+  const deductionPosition = incomeToPercent(sdAmount);
   deductionMarker.style.left = `${deductionPosition}%`;
+
+  // Update marker content with the amount
+  deductionMarker.innerHTML = `
+    <span>S.D.</span>
+    <span>$${sdAmount.toLocaleString()}</span>
+    <span>↓</span>
+  `;
 }
 
 // Update bracket labels display
