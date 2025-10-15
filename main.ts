@@ -252,16 +252,50 @@ const totalIncomeSpan = document.getElementById('total-income') as HTMLElement;
 const standardDeductionSpan = document.getElementById('standard-deduction') as HTMLElement;
 const filingStatusSelect = document.getElementById('filing-status') as HTMLSelectElement;
 const incomeBarTrack = document.querySelector('.income-bar-track') as HTMLElement;
+const incomeBracketsContainer = document.getElementById('income-brackets') as HTMLElement;
+const ltcgBracketsContainer = document.getElementById('ltcg-brackets') as HTMLElement;
 
 // Load tax data
 function loadTaxData(): void {
   currentFilingStatus = taxData[YEAR].marriedFilingJointly;
   updateStandardDeduction();
+  updateBracketLabels();
 }
 
 // Update standard deduction display
 function updateStandardDeduction(): void {
   standardDeductionSpan.textContent = `$${currentFilingStatus.standardDeduction.toLocaleString()}`;
+}
+
+// Update bracket labels display
+function updateBracketLabels(): void {
+  // Clear existing labels
+  incomeBracketsContainer.innerHTML = '';
+  ltcgBracketsContainer.innerHTML = '';
+
+  // Add ordinary income bracket labels
+  for (const bracket of currentFilingStatus.ordinaryIncome) {
+    if (bracket.min <= MAX_INCOME) {
+      const label = document.createElement('div');
+      label.className = 'bracket-label';
+      label.textContent = `${(bracket.rate * 100).toFixed(0)}%`;
+      const position = incomeToPercent(bracket.min);
+      label.style.left = `${position}%`;
+      incomeBracketsContainer.appendChild(label);
+    }
+  }
+
+  // Add LTCG bracket labels
+  for (const bracket of currentFilingStatus.longTermCapitalGains) {
+    if (bracket.min <= MAX_INCOME) {
+      const label = document.createElement('div');
+      label.className = 'bracket-label';
+      label.textContent = `${(bracket.rate * 100).toFixed(0)}%`;
+      const position = incomeToPercent(bracket.min);
+      label.style.left = `${position}%`;
+      ltcgBracketsContainer.appendChild(label);
+    }
+  }
 }
 
 // Calculate percentage position for income amount
