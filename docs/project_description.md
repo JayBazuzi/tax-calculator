@@ -39,9 +39,9 @@ Single-page static HTML/CSS/TypeScript app with no backend.
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  Filing Status: [Married Filing Jointly ▼]                      │
-│      Standard Deducation: $25,900                               │
+│      Standard Deduction: $25,900                                │
 │                                                                 │
-│                   10%      12%      20%     22%    30%                     │  # income tax brackets
+│                   10%      12%      22%     24%    32%                     │  # income tax brackets
 │                                              15%                │  # LTCG (Long-Term Capital Gains) tax brackets
 │         S.D       │         |                                   │  # standard deduction
 │          ▼        │         |                                   │
@@ -75,9 +75,9 @@ Single-page static HTML/CSS/TypeScript app with no backend.
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  Filing Status: [Married Filing Jointly ▼]                      │
-│      Standard Deducation: $25,900                               │
+│      Standard Deduction: $25,900                                │
 │                                                                 │
-│                   10%      12%      20%     22%    24%           │  # income tax brackets
+│                   10%      12%      22%     24%    32%           │  # income tax brackets
 │                                              15%                │  # LTCG (Long-Term Capital Gains) tax brackets
 │         S.D       │         |                                   │  # standard deduction
 │          ▼        │         |                                   │
