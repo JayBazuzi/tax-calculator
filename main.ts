@@ -254,6 +254,7 @@ const filingStatusSelect = document.getElementById('filing-status') as HTMLSelec
 const incomeBarTrack = document.querySelector('.income-bar-track') as HTMLElement;
 const incomeBracketsContainer = document.getElementById('income-brackets') as HTMLElement;
 const ltcgBracketsContainer = document.getElementById('ltcg-brackets') as HTMLElement;
+const deductionMarker = document.querySelector('.deduction-marker') as HTMLElement;
 
 // Load tax data
 function loadTaxData(): void {
@@ -265,6 +266,10 @@ function loadTaxData(): void {
 // Update standard deduction display
 function updateStandardDeduction(): void {
   standardDeductionSpan.textContent = `$${currentFilingStatus.standardDeduction.toLocaleString()}`;
+
+  // Position the deduction marker
+  const deductionPosition = incomeToPercent(currentFilingStatus.standardDeduction);
+  deductionMarker.style.left = `${deductionPosition}%`;
 }
 
 // Update bracket labels display
