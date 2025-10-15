@@ -325,7 +325,8 @@ function incomeToPercent(income: number): number {
 
 // Calculate income from percentage position
 function percentToIncome(percent: number): number {
-  return Math.round((percent / 100) * MAX_INCOME);
+  const income = (percent / 100) * MAX_INCOME;
+  return Math.round(income / 1000) * 1000;
 }
 
 // Update visual display of bars and thumbs
