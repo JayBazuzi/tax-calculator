@@ -2,6 +2,13 @@
 // Retirement Tax Calculator
 // Constants
 const MAX_INCOME = 1000000; // Maximum income for slider ($1M)
+// Mapping from HTML dropdown values to tax data keys
+const FILING_STATUS_MAP = {
+    'married-jointly': 'marriedFilingJointly',
+    'single': 'single',
+    'married-separately': 'marriedFilingSeparately',
+    'head-of-household': 'headOfHousehold',
+};
 // Embedded tax data (from tax-data.json)
 const taxData = {
     "2024": {
@@ -237,7 +244,8 @@ const ltcgBracketsContainer = document.getElementById('ltcg-brackets');
 const deductionMarker = document.querySelector('.deduction-marker');
 // Load tax data
 function loadTaxData() {
-    currentFilingStatus = taxData[currentYear].marriedFilingJointly;
+    const filingStatusKey = FILING_STATUS_MAP[filingStatusSelect.value];
+    currentFilingStatus = taxData[currentYear][filingStatusKey];
     updateStandardDeduction();
     updateBracketLabels();
 }
@@ -475,12 +483,20 @@ function setupYearHandler() {
         updateDisplay();
     });
 }
+// Handle filing status selection changes
+function setupFilingStatusHandler() {
+    filingStatusSelect.addEventListener('change', () => {
+        loadTaxData();
+        updateDisplay();
+    });
+}
 // Initialize the calculator
 function init() {
     loadTaxData();
     setupThumbDragging();
     setupInputHandlers();
     setupYearHandler();
+    setupFilingStatusHandler();
     updateDisplay();
 }
 // Start the application

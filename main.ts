@@ -21,6 +21,14 @@ interface TaxData {
 // Constants
 const MAX_INCOME = 1000000; // Maximum income for slider ($1M)
 
+// Mapping from HTML dropdown values to tax data keys
+const FILING_STATUS_MAP: { [key: string]: string } = {
+  'married-jointly': 'marriedFilingJointly',
+  'single': 'single',
+  'married-separately': 'marriedFilingSeparately',
+  'head-of-household': 'headOfHousehold',
+};
+
 // Embedded tax data (from tax-data.json)
 const taxData: TaxData = {
   "2024": {
@@ -259,7 +267,8 @@ const deductionMarker = document.querySelector('.deduction-marker') as HTMLEleme
 
 // Load tax data
 function loadTaxData(): void {
-  currentFilingStatus = taxData[currentYear].marriedFilingJointly;
+  const filingStatusKey = FILING_STATUS_MAP[filingStatusSelect.value];
+  currentFilingStatus = taxData[currentYear][filingStatusKey];
   updateStandardDeduction();
   updateBracketLabels();
 }
@@ -556,12 +565,21 @@ function setupYearHandler(): void {
   });
 }
 
+// Handle filing status selection changes
+function setupFilingStatusHandler(): void {
+  filingStatusSelect.addEventListener('change', () => {
+    loadTaxData();
+    updateDisplay();
+  });
+}
+
 // Initialize the calculator
 function init(): void {
   loadTaxData();
   setupThumbDragging();
   setupInputHandlers();
   setupYearHandler();
+  setupFilingStatusHandler();
   updateDisplay();
 }
 
