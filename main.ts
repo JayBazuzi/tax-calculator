@@ -22,10 +22,32 @@ interface TaxData {
 const MAX_INCOME = 1000000; // Maximum income for slider ($1M)
 const YEAR = "2025"; // Using 2025 tax data
 
+// Embedded tax data (from tax-data.json)
+const taxData: TaxData = {
+  "2025": {
+    "marriedFilingJointly": {
+      "standardDeduction": 30000,
+      "ordinaryIncome": [
+        { "rate": 0.10, "min": 0, "max": 23850 },
+        { "rate": 0.12, "min": 23850, "max": 96950 },
+        { "rate": 0.22, "min": 96950, "max": 206700 },
+        { "rate": 0.24, "min": 206700, "max": 394600 },
+        { "rate": 0.32, "min": 394600, "max": 501050 },
+        { "rate": 0.35, "min": 501050, "max": 751600 },
+        { "rate": 0.37, "min": 751600, "max": null },
+      ],
+      "longTermCapitalGains": [
+        { "rate": 0.00, "min": 0, "max": 96700 },
+        { "rate": 0.15, "min": 96700, "max": 600050 },
+        { "rate": 0.20, "min": 600050, "max": null },
+      ],
+    },
+  },
+};
+
 // State
 let regularIncome = 0;
 let ltcgIncome = 0;
-let taxData: TaxData;
 let currentFilingStatus: FilingStatusData;
 
 // DOM Elements
@@ -41,9 +63,7 @@ const filingStatusSelect = document.getElementById('filing-status') as HTMLSelec
 const incomeBarTrack = document.querySelector('.income-bar-track') as HTMLElement;
 
 // Load tax data
-async function loadTaxData(): Promise<void> {
-  const response = await fetch('tax-data.json');
-  taxData = await response.json();
+function loadTaxData(): void {
   currentFilingStatus = taxData[YEAR].marriedFilingJointly;
   updateStandardDeduction();
 }
@@ -282,8 +302,8 @@ function setupInputHandlers(): void {
 }
 
 // Initialize the calculator
-async function init(): Promise<void> {
-  await loadTaxData();
+function init(): void {
+  loadTaxData();
   setupThumbDragging();
   setupInputHandlers();
   updateDisplay();
