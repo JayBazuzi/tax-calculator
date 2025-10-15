@@ -38,8 +38,10 @@ const filingStatusSelect = document.getElementById('filing-status') as HTMLSelec
 const taxYearSelect = document.getElementById('tax-year') as HTMLSelectElement;
 const regularIncomeSlider = document.getElementById('regular-income') as HTMLInputElement;
 const regularIncomeValue = document.getElementById('regular-income-value') as HTMLInputElement;
+const regularIncomeBar = document.getElementById('regular-income-bar') as HTMLElement;
 const ltcgSlider = document.getElementById('ltcg') as HTMLInputElement;
 const ltcgValue = document.getElementById('ltcg-value') as HTMLInputElement;
+const ltcgBar = document.getElementById('ltcg-bar') as HTMLElement;
 const totalIncomeDisplay = document.getElementById('total-income') as HTMLElement;
 const totalTaxesDisplay = document.getElementById('total-taxes') as HTMLElement;
 const regularIncomeTaxesDiv = document.getElementById('regular-income-taxes') as HTMLElement;
@@ -50,6 +52,18 @@ const ltcgBracketsDiv = document.getElementById('ltcg-brackets') as HTMLElement;
 // Utility functions
 function formatCurrency(amount: number): string {
     return '$' + amount.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}
+
+function updateBarWidths(): void {
+    const maxValue = parseInt(regularIncomeSlider.max);
+    const regularValue = parseInt(regularIncomeSlider.value);
+    const ltcgValue = parseInt(ltcgSlider.value);
+
+    const regularPercent = (regularValue / maxValue) * 100;
+    const ltcgPercent = (ltcgValue / maxValue) * 100;
+
+    regularIncomeBar.style.width = regularPercent + '%';
+    ltcgBar.style.width = ltcgPercent + '%';
 }
 
 function getCurrentTaxData(): FilingStatusData | null {
@@ -198,6 +212,7 @@ function updateBracketDisplay(): void {
 function syncSliderAndInput(slider: HTMLInputElement, input: HTMLInputElement): void {
     slider.addEventListener('input', () => {
         input.value = slider.value;
+        updateBarWidths();
         calculateTaxes();
     });
 
@@ -206,6 +221,7 @@ function syncSliderAndInput(slider: HTMLInputElement, input: HTMLInputElement): 
         const clampedValue = Math.max(0, Math.min(1000000, value));
         input.value = clampedValue.toString();
         slider.value = clampedValue.toString();
+        updateBarWidths();
         calculateTaxes();
     });
 }
@@ -231,6 +247,7 @@ async function init(): Promise<void> {
 
     // Initial display
     updateBracketDisplay();
+    updateBarWidths();
     calculateTaxes();
 }
 

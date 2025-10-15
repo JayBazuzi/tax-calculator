@@ -24,6 +24,10 @@ test.describe('Retirement Tax Calculator', () => {
     // Wait for calculations to complete
     await page.waitForTimeout(100);
 
+    // Verify sliders match expected values
+    await expect(page.locator('#regular-income')).toHaveValue('40000');
+    await expect(page.locator('#ltcg')).toHaveValue('100000');
+
     // Verify total income
     await expect(page.locator('#total-income')).toHaveText('$140,000');
 
@@ -55,6 +59,10 @@ test.describe('Retirement Tax Calculator', () => {
 
     // Wait for calculations to complete
     await page.waitForTimeout(100);
+
+    // Verify sliders match expected values
+    await expect(page.locator('#regular-income')).toHaveValue('0');
+    await expect(page.locator('#ltcg')).toHaveValue('0');
 
     // Verify total income
     await expect(page.locator('#total-income')).toHaveText('$0');
