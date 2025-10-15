@@ -24,6 +24,76 @@ const YEAR = "2025"; // Using 2025 tax data
 
 // Embedded tax data (from tax-data.json)
 const taxData: TaxData = {
+  "2024": {
+    "single": {
+      "standardDeduction": 14600,
+      "ordinaryIncome": [
+        { "rate": 0.10, "min": 0, "max": 11600 },
+        { "rate": 0.12, "min": 11600, "max": 47150 },
+        { "rate": 0.22, "min": 47150, "max": 100525 },
+        { "rate": 0.24, "min": 100525, "max": 191950 },
+        { "rate": 0.32, "min": 191950, "max": 243725 },
+        { "rate": 0.35, "min": 243725, "max": 609350 },
+        { "rate": 0.37, "min": 609350, "max": null },
+      ],
+      "longTermCapitalGains": [
+        { "rate": 0.00, "min": 0, "max": 47025 },
+        { "rate": 0.15, "min": 47025, "max": 518900 },
+        { "rate": 0.20, "min": 518900, "max": null },
+      ],
+    },
+    "marriedFilingJointly": {
+      "standardDeduction": 29200,
+      "ordinaryIncome": [
+        { "rate": 0.10, "min": 0, "max": 23200 },
+        { "rate": 0.12, "min": 23200, "max": 94300 },
+        { "rate": 0.22, "min": 94300, "max": 201050 },
+        { "rate": 0.24, "min": 201050, "max": 383900 },
+        { "rate": 0.32, "min": 383900, "max": 487450 },
+        { "rate": 0.35, "min": 487450, "max": 731200 },
+        { "rate": 0.37, "min": 731200, "max": null },
+      ],
+      "longTermCapitalGains": [
+        { "rate": 0.00, "min": 0, "max": 94050 },
+        { "rate": 0.15, "min": 94050, "max": 583750 },
+        { "rate": 0.20, "min": 583750, "max": null },
+      ],
+    },
+    "marriedFilingSeparately": {
+      "standardDeduction": 14600,
+      "ordinaryIncome": [
+        { "rate": 0.10, "min": 0, "max": 11600 },
+        { "rate": 0.12, "min": 11600, "max": 47150 },
+        { "rate": 0.22, "min": 47150, "max": 100525 },
+        { "rate": 0.24, "min": 100525, "max": 191950 },
+        { "rate": 0.32, "min": 191950, "max": 243725 },
+        { "rate": 0.35, "min": 243725, "max": 365600 },
+        { "rate": 0.37, "min": 365600, "max": null },
+      ],
+      "longTermCapitalGains": [
+        { "rate": 0.00, "min": 0, "max": 47025 },
+        { "rate": 0.15, "min": 47025, "max": 291850 },
+        { "rate": 0.20, "min": 291850, "max": null },
+      ],
+    },
+    "headOfHousehold": {
+      "standardDeduction": 21900,
+      "ordinaryIncome": [
+        { "rate": 0.10, "min": 0, "max": 16550 },
+        { "rate": 0.12, "min": 16550, "max": 63100 },
+        { "rate": 0.22, "min": 63100, "max": 100500 },
+        { "rate": 0.24, "min": 100500, "max": 191950 },
+        { "rate": 0.32, "min": 191950, "max": 243700 },
+        { "rate": 0.35, "min": 243700, "max": 609350 },
+        { "rate": 0.37, "min": 609350, "max": null },
+      ],
+      "longTermCapitalGains": [
+        { "rate": 0.00, "min": 0, "max": 63000 },
+        { "rate": 0.15, "min": 63000, "max": 551350 },
+        { "rate": 0.20, "min": 551350, "max": null },
+      ],
+    },
+  },
   "2025": {
     "marriedFilingJointly": {
       "standardDeduction": 30000,
