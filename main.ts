@@ -20,7 +20,6 @@ interface TaxData {
 
 // Constants
 const MAX_INCOME = 1000000; // Maximum income for slider ($1M)
-const YEAR = "2025"; // Using 2025 tax data
 
 // Embedded tax data (from tax-data.json)
 const taxData: TaxData = {
@@ -240,6 +239,7 @@ const taxData: TaxData = {
 let regularIncome = 0;
 let ltcgIncome = 0;
 let currentFilingStatus: FilingStatusData;
+let currentYear = "2025";
 
 // DOM Elements
 const regularIncomeBar = document.getElementById('regular-income-bar') as HTMLElement;
@@ -250,6 +250,7 @@ const regularIncomeInput = document.getElementById('regular-income-input') as HT
 const ltcgInput = document.getElementById('ltcg-input') as HTMLInputElement;
 const totalIncomeSpan = document.getElementById('total-income') as HTMLElement;
 const standardDeductionSpan = document.getElementById('standard-deduction') as HTMLElement;
+const yearSelect = document.getElementById('year-select') as HTMLSelectElement;
 const filingStatusSelect = document.getElementById('filing-status') as HTMLSelectElement;
 const incomeBarTrack = document.querySelector('.income-bar-track') as HTMLElement;
 const incomeBracketsContainer = document.getElementById('income-brackets') as HTMLElement;
@@ -258,7 +259,7 @@ const deductionMarker = document.querySelector('.deduction-marker') as HTMLEleme
 
 // Load tax data
 function loadTaxData(): void {
-  currentFilingStatus = taxData[YEAR].marriedFilingJointly;
+  currentFilingStatus = taxData[currentYear].marriedFilingJointly;
   updateStandardDeduction();
   updateBracketLabels();
 }
@@ -545,11 +546,21 @@ function setupInputHandlers(): void {
   });
 }
 
+// Handle year selection changes
+function setupYearHandler(): void {
+  yearSelect.addEventListener('change', () => {
+    currentYear = yearSelect.value;
+    loadTaxData();
+    updateDisplay();
+  });
+}
+
 // Initialize the calculator
 function init(): void {
   loadTaxData();
   setupThumbDragging();
   setupInputHandlers();
+  setupYearHandler();
   updateDisplay();
 }
 
