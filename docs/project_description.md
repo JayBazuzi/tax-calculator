@@ -32,22 +32,24 @@ Single-page static HTML/CSS/TypeScript app with no backend.
 
 ## UI Layout
 
+### Typical example: 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                     Retirement Tax Calculator                   │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  Filing Status: [Married Filing Jointly ▼]                      │
+│      Standard Deducation: $25,900                               │
 │                                                                 │
-│                   10%      12%      20%                         │  # income tax brackets
+│                   10%      12%      20%     22%    30%                     │  # income tax brackets
 │                                              15%                │  # LTCG (Long-Term Capital Gains) tax brackets
-│         S.D       │                                             │  # standard deduction
-│          ▼        │                                             │
+│         S.D       │         |                                   │  # standard deduction
+│          ▼        │         |                                   │
 │  ├──Regular Income───────│─────────── LTCG ──────────┤          │
-│                                   Total income: $100,000        │
-│
-│  Regular income: [ $xxx ]                                                │
-│  LTCG: [ $xxx ]                                                        │
+│                                   Total income: $60,000         │
+│                                                                 │
+│  Regular income: [ $50,000 ]                                    │
+│  LTCG: [ $10,000 ]                                              │
 │                                                                 │
 ├─────────────────────────────────────────────────────────────────┤
 │                           Taxes                                 │
@@ -65,11 +67,51 @@ Single-page static HTML/CSS/TypeScript app with no backend.
 └─────────────────────────────────────────────────────────────────┘
 ```
 
+### "zero" example:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     Retirement Tax Calculator                   │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  Filing Status: [Married Filing Jointly ▼]                      │
+│      Standard Deducation: $25,900                               │
+│                                                                 │
+│                   10%      12%      20%     22%    24%           │  # income tax brackets
+│                                              15%                │  # LTCG (Long-Term Capital Gains) tax brackets
+│         S.D       │         |                                   │  # standard deduction
+│          ▼        │         |                                   │
+│  ││                                                             │
+│                                   Total income: $0              │
+│                                                                 │
+│  Regular income: [ $0 ]                                         │
+│  LTCG: [ $0 ]                                                   │
+│                                                                 │
+├─────────────────────────────────────────────────────────────────┤
+│                           Taxes                                 │
+│                                                                 │
+│  Regular Income:                                                │
+│    $xxx @ 10% = $yyy                                            │
+│    $xxx @ 12% = $yyy                                            │
+│    $xxx @ 20% = $yyy                                            │
+│                                                                 │
+│  Capital Gains:                                                 │
+│    $xxx @  0% = $yyy                                            │
+│    $xxx @ 15% = $yyy                                            │
+│                                                                 │
+│  Total taxes: $xxx                                              │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+
+
 ## Behavior
 
 the user can slide the regular income left-right slider to change the amount of regular income
 
 the user can slide the LTCG left-right slider to change the amount of Long-term capital gains
+
+the LTCG slider "stacks" on top of the regular income slider, so the total income is the sum of the regular income and the LTCG
 
 The standard deduction and tax brackets are set by the filing status
 
